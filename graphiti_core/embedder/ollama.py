@@ -92,22 +92,22 @@ class OllamaEmbedder(EmbedderClient):
         )
 
 
-async def test():
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
+# async def test():
+#     import os
+#     from dotenv import load_dotenv
+#     load_dotenv()
 
-    embedder = OllamaEmbedder(
-        config=OllamaEmbedderConfig(
-            api_key=os.environ["EMBEDDING_APIKEY"],
-            embedding_model=os.environ["EMBEDDING_MODEL"],
-            embedding_dim=4096,
-            base_url=os.environ["EMBEDDING_URL"],
-        )
-    )
+#     embedder = OllamaEmbedder(
+#         config=OllamaEmbedderConfig(
+#             api_key=os.environ["EMBEDDING_APIKEY"],
+#             embedding_model=os.environ["EMBEDDING_MODEL"],
+#             embedding_dim=4096,
+#             base_url=os.environ["EMBEDDING_URL"],
+#         )
+#     )
 
-    r  = await embedder.create_batch(["java is a language", "python is not good."])
-    print(r)
+#     r  = await embedder.create_batch(["java is a language", "python is not good."])
+#     print(r)
 
-import asyncio
-asyncio.run(test())
+# import asyncio
+# asyncio.run(test())

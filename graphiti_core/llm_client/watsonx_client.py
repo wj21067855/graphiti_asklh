@@ -120,33 +120,33 @@ class WatsonxClient(LLMClient):
             status_code = getattr(e, 'status_code', None) or getattr(e, 'status', None)
             if err_name in ('RequestError', 'ResponseError') and status_code == 429:
                 raise RateLimitError from e
-            logger.error(f'Error in generating LLM response (ollama): {e}')
+            logger.error(f'Error in generating LLM response (watsonx): {e}')
             raise
 
 
 
-async def test():
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
+# async def test():
+#     import os
+#     from dotenv import load_dotenv
+#     load_dotenv()
 
-    from graphiti_core.llm_client.openai_client import OpenAIClient
-    # ---- Ollama (OpenAI-compatible) ----
-    llm_config = LLMConfig(
-        api_key=os.environ["WATSONX_APIKEY"],
-        model=os.environ["WATSONX_MODEL"], 
-        small_model=os.environ["WATSONX_MODEL"], # Use the same model as the model.
-        base_url=os.environ["WATSONX_URL"],
-        max_tokens=8192,
-        project_id=os.environ["WATSONX_PROJECT_ID"]
-    )
+#     from graphiti_core.llm_client.openai_client import OpenAIClient
+#     # ---- Ollama (OpenAI-compatible) ----
+#     llm_config = LLMConfig(
+#         api_key=os.environ["WATSONX_APIKEY"],
+#         model=os.environ["WATSONX_MODEL"], 
+#         small_model=os.environ["WATSONX_MODEL"], # Use the same model as the model.
+#         base_url=os.environ["WATSONX_URL"],
+#         max_tokens=8192,
+#         project_id=os.environ["WATSONX_PROJECT_ID"]
+#     )
 
-    client = WatsonxClient(config=llm_config)
+#     client = WatsonxClient(config=llm_config)
 
-    r  = await client._generate_response(messages=[
-       Message(role = "user", content = "what is java")
-    ])
-    print(r)
+#     r  = await client._generate_response(messages=[
+#        Message(role = "user", content = "what is java")
+#     ])
+#     print(r)
 
-import asyncio
-asyncio.run(test())
+# import asyncio
+# asyncio.run(test())

@@ -162,25 +162,25 @@ class WatsonxRerankClient(CrossEncoderClient):
             logger.error(f'Error in generating LLM response: {e}')
             raise
 
-async def test():
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
+# async def test():
+#     import os
+#     from dotenv import load_dotenv
+#     load_dotenv()
 
-    from graphiti_core.llm_client.openai_client import OpenAIClient
-    # ---- Ollama (OpenAI-compatible) ----
-    llm_config = LLMConfig(
-        api_key=os.environ["WATSONX_APIKEY"],
-        model=os.environ["WATSONX_MODEL"], 
-        small_model=os.environ["WATSONX_MODEL"], # Use the same model as the model.
-        base_url=os.environ["WATSONX_URL"],
-        max_tokens=8192,
-        project_id=os.environ["WATSONX_PROJECT_ID"]
-    )
+#     from graphiti_core.llm_client.openai_client import OpenAIClient
+#     # ---- Ollama (OpenAI-compatible) ----
+#     llm_config = LLMConfig(
+#         api_key=os.environ["WATSONX_APIKEY"],
+#         model=os.environ["WATSONX_MODEL"], 
+#         small_model=os.environ["WATSONX_MODEL"], # Use the same model as the model.
+#         base_url=os.environ["WATSONX_URL"],
+#         max_tokens=8192,
+#         project_id=os.environ["WATSONX_PROJECT_ID"]
+#     )
 
-    cross_encoder = WatsonxRerankClient(config=llm_config)
-    r  = await cross_encoder.rank("what is java", ["java is a language", "python is not good."])
-    print(r)
+#     cross_encoder = WatsonxRerankClient(config=llm_config)
+#     r  = await cross_encoder.rank("what is java", ["java is a language", "python is not good."])
+#     print(r)
 
-import asyncio
-asyncio.run(test())
+# import asyncio
+# asyncio.run(test())
