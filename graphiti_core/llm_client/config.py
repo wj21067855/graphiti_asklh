@@ -37,11 +37,13 @@ class LLMConfig:
     def __init__(
         self,
         api_key: str | None = None,
+        project_id: str|None = None,
         model: str | None = None,
         base_url: str | None = None,
         temperature: float = DEFAULT_TEMPERATURE,
         max_tokens: int = DEFAULT_MAX_TOKENS,
         small_model: str | None = None,
+        
     ):
         """
         Initialize the LLMConfig with the provided parameters.
@@ -66,3 +68,4 @@ class LLMConfig:
         self.small_model = small_model
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.project_id = project_id
